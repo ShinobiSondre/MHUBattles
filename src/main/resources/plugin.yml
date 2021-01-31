@@ -1,0 +1,95 @@
+name: MHUBattles
+version: ${project.version}
+main: com.company.MHUBattles
+api-version: 2.10.0
+depend: [TitleManager,CustomSkins]
+softdepend: []
+commands:
+  mmbattle:
+    description: mmbattle
+    aliases: [mmb]
+    usage: /mmbattle
+  setpoint:
+    description: sets a point for the arena
+    aliases: [mmb setpoint]
+    usage: /setpoint
+  setarena:
+    description: sets the arena
+    aliases: [mmb setarena]
+    usage: /setarena
+  battleend:
+    description: mmbattle
+    aliases: [mmb]
+    usage: /mmbattle
+  arenalist:
+    description: arenalist
+    aliases: [arenalist]
+    usage: /arenalist
+  randomspawner:
+    description: randomspawner
+    aliases: [randomspawner]
+    usage: /randomspawner
+  addmob:
+    description: add a mob
+    usage: /addmob mobname
+  moblist:
+    description: list over added mobs
+    usage: /moblist
+  friends:
+    description: friends
+    aliases: [friends]
+    usage: /friends
+  addfriend:
+    description: adds friends
+    usage: /addfriend
+  removefriend:
+    description: remvoes friends
+    usage: /removefriend
+  accept:
+    description: accept friend request
+    usage: /accept
+  decline:
+    description: declines friend request
+    usage: /decline
+  check:
+    description: check friends in radius
+    usage: /check
+  mhu:
+    description: help of mhu plugins
+  pathtest:
+    description: help of mhu plugins
+  updatemob:
+    description: help of mhu plugins
+  mhuteleport:
+    description: help of mhu plugins
+  roompoint:
+    description: help of mhu plugins
+  setroom:
+    description: help of mhu plugins
+  marry:
+    description: help of mhu plugins
+  surname:
+    description: help of mhu plugins
+  male:
+    description: help of mhu plugins
+  female:
+    description: help of mhu plugins
+  adopt:
+    description: help of mhu plugins
+  blackmarket:
+    description: help of mhu plugins
+  immune:
+    description: help of mhu plugins
+  blackmarketactivate:
+    description: help of mhu plugins
+  robstart:
+    description: help of mhu plugins
+  divorce:
+    description: help of mhu plugins
+  gdr:
+    description: help of mhu plugins
+  autobind:
+    description: help of mhu plugins
+  mobskin:
+    description: help of mhu plugins
+
