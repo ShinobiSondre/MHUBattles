@@ -33,6 +33,7 @@
     import java.util.ArrayList;
     import java.util.HashMap;
     import java.util.Scanner;
+    import java.util.UUID;
 
     import static io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitAdapter.adapt;
     import static java.lang.Integer.parseInt;
@@ -59,6 +60,7 @@
         ArrayList friends = new ArrayList();
         ArrayList<String> mobList = new ArrayList();
         com.company.MHUBattles autoevent;
+
 
         public MythicMobs mm = (MythicMobs) Bukkit.getServer().getPluginManager().getPlugin("MythicMobs");
 
@@ -128,7 +130,7 @@
 
         @EventHandler public void HageshiiItamiDeathMessage (PlayerDeathEvent player){
 
-            if(player.getEntity().getName().equals("HageshiiItami"))
+            if(player.getEntity().equals("HageshiiItami"))
             player.setDeathMessage(player.getEntity().getName() + " §c§lkilled by a child on a tricycle!");
 
         }
@@ -184,7 +186,6 @@
 
                              }
                          }
-
                          if(!p2.equals(player)){
 
                              titleText(p2, 0, "§a§lThey answered....§a§l", "1", false);
@@ -212,12 +213,9 @@
 
                              for(Player onlineplayer : Bukkit.getOnlinePlayers()){
 
-
                                  onlineplayer.sendMessage("§4§l❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤");
                                  onlineplayer.sendMessage("§a§l" + player.getName() + " §f§lis now a §d§lchild §f§lof " + "§a§l"+ p2.getName() + " §f§land§a§l " + parent.getName());
                                  onlineplayer.sendMessage("§4§l❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤");
-
-
 
                              }
 
@@ -278,12 +276,10 @@
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + chat.getPlayer().getName() + " set married." + p2.getName() + "." + surname + " true");
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + chat.getPlayer().getName() + " set married" + " true");
 
-                        for(Player onlineplayer : Bukkit.getOnlinePlayers()){
 
-                            onlineplayer.sendMessage("§4§l❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤");
-                            onlineplayer.sendMessage("§a§l"+ player.getName() + " §d§land " + "§a§l"+ p2.getName() + " §d§lhave gotten married!!");
-                            onlineplayer.sendMessage("§4§l❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤");
-                        }
+                            Bukkit.broadcastMessage("§4§l❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤");
+                            Bukkit.broadcastMessage("§a§l"+ player.getName() + " §d§land " + "§a§l"+ p2.getName() + " §d§lhave gotten married!!");
+                            Bukkit.broadcastMessage("§4§l❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤");
 
                     }}}
 
@@ -500,6 +496,9 @@
 
                 @EventHandler
         public void PlayerMove(PlayerMoveEvent move) throws InterruptedException, IOException {
+
+
+                    if(move.getTo().distance(move.getFrom()) == 0) return;
 
 
                     ArrayList <String> mobs = new ArrayList<>(); // u.Reader("plugins/MHUBattles/", "BattleMobs", "");
@@ -770,102 +769,8 @@
                         // convert back to location
 
 
-
-
-
-                    /*}if (move.getPlayer().hasPermission("BrainWash")) {
-
-                        Player p1 = move.getPlayer();
-
-                        int v = 0;
-
-                        int sheep1 = 0;
-
-                        for (Player sheep : Bukkit.getOnlinePlayers()) {
-
-                            if (!sheep.equals(p1)) {
-
-                                sheep1++;
-                                sheep.teleport(getLoc(2 * sheep1));
-                                sheep.setGlowing(true);
-                                mhu.BrainWashedPlayer = sheep;
-                            }
-
-
-                        }*/
-
-                        /*for(ActiveMob mob : mm.getMobManager().getActiveMobs()){
-
-                            v++;
-
-                            Entity mob1 = mob.getEntity().getBukkitEntity();
-
-                            mob1.teleport(getLoc(2*v));
-                            mob1.setGlowing(true);
-
-                /*else if(v>=mm.getMobManager().getActiveMobs().size()/2)
-                    mob1.teleport(getLoc(-2*v));
-
-
-
-                            mob1.setVelocity(naruto.getVelocity());
-
-
-                        }*/
-
-
                     }
 
-
-                    if (loaded = true && mhu.surnameCheck.contains(move.getPlayer().getUniqueId()) == false && !checkFirstLoginElements(move.getPlayer()) && !mhu.genderCheck.contains(move.getPlayer().getUniqueId())) {
-
-
-                        DelayedCommand(move.getPlayer(), 10, "1", "warp tutorialStart " + move.getPlayer().getName());
-
-                        Text(move.getPlayer(), 20, "§f§lYAAWN", "2");
-                        Text(move.getPlayer(), 40, "§f§lDo /surname", "3");
-                        Text(move.getPlayer(), 60, "§f§lTo write your surname.", "4");
-
-
-                    }
-
-                    if (mhu.surnameCheck.contains(move.getPlayer().getUniqueId()) && !checkFirstLoginElements(move.getPlayer())) {
-
-
-                        if (!mhu.genderCheck.contains(move.getPlayer().getUniqueId())) {
-
-                            DelayedCommandServer(mhu.getServer().getConsoleSender(), 20, "5", "c forcecast " + move.getPlayer().getName() + " GenderMenu");
-
-
-                        }
-
-                    }
-
-
-                    if (move.getPlayer().getName().equals("_MilesMorales")) {
-
-
-                        move.getPlayer().sendMessage("https://i.ytimg.com/an_webp/dQw4w9WgXcQ/mqdefault_6s.webp?du=3000&sqp=CNDY7_4F&rs=AOn4CLBcfmgQ6Id4A8LvC3W7Zmm8tWHwxw");
-
-
-                    }
-
-                    Player p3 = Bukkit.getPlayer("Eliejr");
-
-                    Player p4 = Bukkit.getPlayer("lecter67");
-
-                    Player naruto = Bukkit.getPlayer("Naruto");
-
-                    ArrayList<Player> Players = new ArrayList();
-
-                    for (Player player : Bukkit.getOnlinePlayers()) {
-
-
-                        if (!player.equals(naruto))
-                            Players.add(player);
-
-
-                    }
 
 
                 }
@@ -878,7 +783,9 @@
 
             Player killer = killer1.getPlayer();
 
-            killer.setGlowing(false);
+            Location loc = new Location(Bukkit.getWorld("Oshode"),481 ,68 ,1281);
+
+            killer.teleport(loc);
 
             if(killer.getName().contains("*")){
 
@@ -890,8 +797,6 @@
 
 
         }
-
-
 
 
         public Location getLoc(int distance){
@@ -910,6 +815,18 @@
         public void LeaveEvent(PlayerQuitEvent killer1){
 
             System.out.print("LeaveEventActivated");
+
+            Player player = killer1.getPlayer();
+
+            friendList.clear();
+            friends.remove(killer1.getPlayer().getName());
+            mhu.drugdealerwait.remove(player);
+            mhu.hobowait.remove(player);
+            mhu.shadydealerwait.remove(player);
+            mhu.mobtimer.remove(player);
+            mhu.MobsAroundPlayer.remove(player);
+            mhu.genderCheck.remove(player.getUniqueId());
+            mhu.surnameCheck.remove(player.getUniqueId());
 
         }
 
@@ -978,17 +895,18 @@
                     exp = parseInt(util1.Reader("MHU_GlobalScore/MythicMobs","MobExp",mobname+": ").get(0));
                     player.sendMessage("Exp: " + exp);} catch (NumberFormatException e) {
                     mobfilename = util1.Reader("MHU_GlobalScore/MythicMobs","MobExp",mobname).get(0).split(":")[0];
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+
+                    exp = 10;
                 }
 
 
-                if(mobname.equals(mobfilename)){
+              /*  if(mobname.equals(mobfilename)){
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"gl addexp " + player.getName() + " " + exp+1);
                    }
                 else{
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"gl addexp " + player.getName() + " " +  10);
-                }
+                }*/
 
 
 

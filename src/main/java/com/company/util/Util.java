@@ -6,6 +6,7 @@ import io.lumine.xikage.mythicmobs.MythicMobs;
 import io.puharesource.mc.titlemanager.api.v2.TitleManagerAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.io.*;
@@ -127,7 +128,7 @@ public class Util {
     }
 
 
-    public void DelayedMobSpawn(Player sender, long ticks, String indentifier, String mobname, Location mobloc){
+    public void DelayedCommand(Player sender, long ticks, String indentifier, String commandserver){
 
 
         textwait.put(sender.getName()+indentifier,0);
@@ -138,16 +139,12 @@ public class Util {
         final int tid = mhu.getServer().getScheduler().scheduleSyncRepeatingTask(mhu, new Runnable() {
             public void run() {
 
-                textwait.put(sender.getName()+indentifier,textwait.get(sender.getName()+indentifier)+1);
-                sender.sendMessage("Delay wurk?");
-
                 //END
                 if (textwait.get(sender.getName()+indentifier)==2) {
 
+                    CommandSender cmdsender = Bukkit.getConsoleSender();
 
-
-                    sender.sendMessage("Delay wurk?");
-                    mm.getMobManager().spawnMob(mobname,mobloc);
+                    Bukkit.dispatchCommand(cmdsender,commandserver);
 
 
 

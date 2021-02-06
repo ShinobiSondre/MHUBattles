@@ -14,6 +14,7 @@ import org.bukkit.*;
 import org.bukkit.command.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Sheep;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -108,6 +109,14 @@ public class BattleCMD implements CommandExecutor,Listener{
          else if (cmd.getName().equals("surname")){
 
 
+             for (Entity entity : Bukkit.getServer().getWorld("Maikura2").getLivingEntities()){
+
+
+                 if(entity instanceof Sheep)
+                 entity.remove();
+
+
+             }
 
              Player p1 = (Player) sender1;
 
